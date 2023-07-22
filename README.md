@@ -78,20 +78,22 @@ Should also have some sort of high level logging, complex enough to undo actions
   - `GET api/v1/users/me`
 - inv
   - `GET api/v1/inventories`
-  - `POST api/v1/inventories/new`
+  - `POST api/v1/inventories`
   - `GET api/v1/inventories/:invId`
   - `DELETE api/v1/inventories/:invId`
 - inv schema
-  - `PATCH api/v1/inventories/:invId/schema`
+  - `PATCH api/v1/inventories/:invId/schema` (edit schema)
+- ws
+  - `WS api/v1/inventories/:invId/ws`
 - items
   - `GET api/v1/inventories/:invId/items?offset,amount,filter`
-  - `POST   api/v1/inventories/:invId/items/new`
+  - `POST   api/v1/inventories/:invId/items` (create new item)
   - `GET    api/v1/inventories/:invId/item/:itemId`
-  - `PATCH  api/v1/inventories/:invId/item/:itemId`
+  - `PATCH  api/v1/inventories/:invId/item/:itemId` (edit)
   - `DELETE api/v1/inventories/:invId/item/:itemId`
 - users
-  - `POST api/v1/users/new`
-  - `POST api/v1/users/`
+  - `GET api/v1/users?offset,amount,filter`
+  - `POST api/v1/users` (create new user)
 - user
   - `GET api/v1/users/:userId`
   - `DELETE api/v1/users/:userId`

@@ -1,19 +1,16 @@
 use serde::{Serialize, Deserialize};
 
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Namespace {
     pub id: String,
     pub name: String,
     pub inventory_ids: Vec<String>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct NamespaceConfig {
-    database: DatabaseType,
+    pub database: DatabaseType,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub enum DatabaseType {
-    InMemorySQLite,
+    SQLiteMemory,
     SQLiteLocal { path: String },
     SQLiteRemote { uri: String },
     MongoDB {

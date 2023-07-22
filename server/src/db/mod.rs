@@ -1,1 +1,1 @@
-pub mod memory;
+pub mod sqlite_memory;
