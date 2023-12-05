@@ -161,6 +161,23 @@ Routes marked as **Filterable** use query strings `filter`
     - query string `before`, `after`
     - paginated
 
+### Permissions
+
+Permissions are namespaced, the format is `namespace:perms`. Perms can be split using `.`. The convention is `[a-z0-9_]`
+
+For example: `my_plugin:notes.create`
+
+Available permissions for `core`:
+
+- `core:users.create`
+- `core:users.delete`
+- `core:users.edit.username`
+- `core:users.auth.reset`
+  - Reset passwords of other users
+- `core:config.edit`
+- `core:inv.create`
+- TODO
+
 ### WebSocket API
 
-
+The websocket api allows users to edit in real-time, making HCCIVM even more pain to code but removing a lot of race conditions (hopefully)
