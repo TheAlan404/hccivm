@@ -1,5 +1,17 @@
 # hccivm
 
+The inventory editor.
+
+## Goal
+
+An inventory system designed to be as flexible as possible.
+
+Very many use cases, and configurable for:
+
+- Libraries (keeping count of books)
+- Workshops (items inventory)
+- Stock-related anything actually
+
 ## TODO
 
 - [ ] find better name
@@ -181,3 +193,42 @@ Available permissions for `core`:
 ### WebSocket API
 
 The websocket api allows users to edit in real-time, making HCCIVM even more pain to code but removing a lot of race conditions (hopefully)
+
+### The Schema
+
+should,, be good
+
+```ts
+type Schema = Map<String, Prop>
+
+type Prop = {
+  type: Ty,
+  label: string?,
+  desc: string?,
+
+  autocomplete: bool,
+
+  // only on select
+  values: string[],
+}
+
+enum Ty {
+  string,
+  number,
+  count,
+  media,
+  link,
+  select,
+  users,
+}
+```
+
+ex. 1
+
+```js
+{
+  name: { type: "string", label: "Book Name" },
+  author: { type: "string", label: "Book Author", autocomplete: true },
+  count: { type: "count", label: "Amount Left" },
+}
+```
