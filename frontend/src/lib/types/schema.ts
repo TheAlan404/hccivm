@@ -10,11 +10,10 @@ export interface ItemProperty {
 }
 
 export enum ItemPropertyType {
-    string = "string",
+    text = "text",
     number = "number",
-    count = "count",
-    media = "media",
-    link = "link",
-    select = "select",
-    users = "users",
 }
+
+export type ValueOf<T> = T extends "text" ? string : (
+    T extends "number" ? number : never
+);
