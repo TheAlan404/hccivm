@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
-import { Schema } from "../../lib/types/schema";
+import { InventorySchema } from "../../lib/types/schema";
 
 export interface ISchemaContext {
-    schema: Schema,
+    schema: InventorySchema,
 }
 
 export const SchemaContext = React.createContext<ISchemaContext>();
@@ -12,7 +12,7 @@ export const SchemaProvider = ({
     schema,
 }: {
     children: JSX.Element,
-    schema: Schema,
+    schema: InventorySchema,
 }) => {
     return (
         <SchemaContext.Provider

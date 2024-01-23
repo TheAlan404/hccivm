@@ -81,4 +81,14 @@ Routes marked as **Filterable** use query strings `filter`
 
 ## WebSocket API
 
-The websocket api allows users to edit in real-time, making HCCIVM even more pain to code but removing a lot of race conditions (hopefully)
+The websocket api allows users to edit in real-time.
+
+### WebSocket Message Format
+
+TODO
+
+## Example API Usage
+
+- user logs in
+- `POST api/v1/login`
+

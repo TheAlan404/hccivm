@@ -2,44 +2,75 @@
 
 [<- Back](./README.md)
 
+# Server Instance
+
 ```ts
-// every instance:
 interface Server {
-    name: string,
-    description: string,
-    Namespace,
+	name: string,
+	description: string,
+	namespace: Namespace,
 }
+```
 
-// namespaces can be thought like they are "guilds" in discord
+# Namespace
+
+```ts
 interface Namespace {
-    id: string,
-    name: string,
-    User[],
-    Role[],
-    Inv[]
+	id: string,
+	name: string,
+	users: User[],
+	roles: Role[],
+	inventories: Inventory[],
 }
+```
 
-// an inventory that contains items
-interface Inv {
-    name: string,
+# User
+
+```ts
+interface User {
+	id: string,
+	username: string,
+	passwordHash: string,
+}
+```
+
+# Role
+
+# Inventory
+
+```ts
+interface Inventory {
     id: string,
+	name: string,
     permissions,
     schema: Schema,
     items: Item[],
 }
 ```
 
+# Schema
+
 Schemas define the properties of items in an inventory, its similar to a json schema.
+
+```ts
+type InventorySchema = {
+    properties: Record<string, ItemProperty>,
+};
+```
 
 Example schema:
 
 ```ts
-Schema = {
-    name: { type: "string" },
-    amount: { type: "number" },
-    description: { type: "string" },
+let ex: Schema = {
+    properties: {
+		name: { type: "string" },
+		amount: { type: "number" },
+		description: { type: "string" },
+	}
 }
 ```
+
+# Item
 
 Example item according to the schema:
 
@@ -51,43 +82,20 @@ Example item according to the schema:
 }
 ```
 
-Schemas would also contain info about renderers and such, for example a `shortDesc` would have "short text view" and a `description` would have a "long text view"
-
-more example
-
 ```ts
-type Schema = Map<String, Prop>
-
-type Prop = {
-  type: Ty,
-  label: string?,
-  desc: string?,
-
-  autocomplete: bool,
-
-  // only on select
-  values: string[],
+const exampleSchema: InventorySchema = {
+	properties: {
+		name: { type: "string", label: "Book Name" },
+		author: { type: "string", label: "Book Author", autocomplete: true },
+		count: { type: "count", label: "Amount Left" },
+	}
 }
 
-enum Ty {
-  string,
-  number,
-  count,
-  media,
-  link,
-  select,
-  users,
-}
-```
-
-ex. 1
-
-```js
-{
-  name: { type: "string", label: "Book Name" },
-  author: { type: "string", label: "Book Author", autocomplete: true },
-  count: { type: "count", label: "Amount Left" },
-}
+const exampleItem: InventoryItem<typeof exampleSchema> = {
+	name: "1984",
+	author: "George Orwell",
+	count: 100,
+} 
 ```
 
 ### Database

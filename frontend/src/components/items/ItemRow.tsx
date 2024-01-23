@@ -1,9 +1,9 @@
-import { Item } from "../../lib/types/item"
+import { InventoryItem } from "../../lib/types/item"
 
 export const ItemRow = ({
     item,
 }: {
-    item: Item,
+    item: InventoryItem,
 }) => {
     return (
         

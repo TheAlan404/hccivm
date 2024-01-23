@@ -1,3 +1,5 @@
-import { ItemPropertyType, Schema } from "./schema";
+import { ItemPropertyType, InventorySchema, SchemaTypeToItemType } from "./schema";
 
-export type Item = Record<string, any>;
+export type InventoryItem<T extends InventorySchema> = {
+    [K in keyof T["properties"]]: SchemaTypeToItemType<T["properties"][K]["type"]>;
+};
